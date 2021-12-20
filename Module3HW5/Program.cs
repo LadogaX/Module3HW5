@@ -6,14 +6,14 @@ namespace Module3HW5
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var helloNameFile = "Hello.txt";
             var worldNameFile = "World.txt";
 
-            CreateFiles(helloNameFile, worldNameFile);
+            await CreateFiles(helloNameFile, worldNameFile);
 
-            ReadFromFiles(helloNameFile, worldNameFile).GetAwaiter().GetResult();
+            await ReadFromFiles(helloNameFile, worldNameFile);
         }
 
         public static async Task<string> ReadFromFiles(string nameFile1, string nameFile2)
@@ -50,7 +50,7 @@ namespace Module3HW5
             }
         }
 
-        public static async void CreateFiles(string nameFile1, string nameFile2)
+        public static async Task CreateFiles(string nameFile1, string nameFile2)
         {
             await WriteAsync(nameFile1, $"this is text of file {nameFile1}");
             await WriteAsync(nameFile2, $"THIS IS TEXT OF FILE {nameFile2}");
